@@ -6,6 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 
+from KNeighborsClassifier import knn
+
 
 df = pd.read_csv('Social Media Ads Data/Social_Network_Ads.csv')
 
@@ -31,12 +33,19 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 KNN = KNeighborsClassifier(n_neighbors=5)
 KNN.fit(X_train, y_train)
 
-
 y_pred = KNN.predict(X_test)
-
 
 print(accuracy_score(y_test, y_pred))
 
+
+
+
+ourKnn = knn(k=5)
+ourKnn.fit(X_train, y_train)
+
+y_pred1 = ourKnn.predict(X_test)
+
+print(accuracy_score(y_test, y_pred1))
 
 
 
